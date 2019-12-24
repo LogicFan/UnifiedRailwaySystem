@@ -11,3 +11,4 @@ C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Deb
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.csproj.CopyComplete
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.dll
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.pdb
+C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\0Harmony.dll

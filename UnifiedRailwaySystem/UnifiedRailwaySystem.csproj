@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="URSNetManager.cs" />
     <Compile Include="URSMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
