@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// currently not used
+
 namespace UnifiedRailwaySystem
 {
     public static class URSInitializer
@@ -7,7 +9,7 @@ namespace UnifiedRailwaySystem
         public static void Init()
         {
             Debug.Log("URS initializing...");
-            AddNetInfo();
+            
             Debug.Log("URS initialized.");
         }
 
