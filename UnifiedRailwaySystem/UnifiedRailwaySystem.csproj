@@ -54,6 +54,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="URSInit.cs" />
+    <Compile Include="URSUtil.cs" />
+    <Compile Include="TrackAI\Class1.cs" />
     <Compile Include="URSNetManager.cs" />
     <Compile Include="URSMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
