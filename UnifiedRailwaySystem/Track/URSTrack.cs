@@ -16,7 +16,7 @@ namespace UnifiedRailwaySystem
         {
             Debug.Log("URSTrack.ChangeTrack");
 
-            for(uint i = 0; i < PrefabCollection<NetInfo>.LoadedCount(); ++i)
+            for (uint i = 0; i < PrefabCollection<NetInfo>.LoadedCount(); ++i)
             {
                 NetInfo info = PrefabCollection<NetInfo>.GetLoaded(i);
 
