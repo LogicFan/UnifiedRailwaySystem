@@ -31,12 +31,12 @@ namespace UnifiedRailwaySystem.URSRoadBridgeAI
                 panel.SetMessage("Harmony Trainpiler Error", "Error on URSRoadBridgeAI.cs, line 31", true);
             }
 
-            //string s = "";
-            //for (int i = 0; i < codes.Count; ++i)
-            //{
-            //    s += "TrainTrackBaseAI, codes[" + i + "]: " + codes[i] + "\n";
-            //}
-            //Debug.Log(s);
+            // string s = "";
+            // for (int i = 0; i < codes.Count; ++i)
+            // {
+            //     s += "TrainTrackBaseAI, codes[" + i + "]: " + codes[i] + "\n";
+            // }
+            // Debug.Log(s);
 
             return codes.AsEnumerable();
         }
