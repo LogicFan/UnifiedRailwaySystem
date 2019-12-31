@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-
-// currently not used
-
+// not in used
 namespace UnifiedRailwaySystem
 {
     public static class URSInitializer
@@ -26,7 +24,7 @@ namespace UnifiedRailwaySystem
         {
             NetInfo trainTrack = PrefabCollection<NetInfo>.FindLoaded("Train Track");
             NetInfo metroTrack = PrefabCollection<NetInfo>.FindLoaded("Metro Track");
-            NetInfo URSMetroTrack = URSPrefabCloner.Clone<NetInfo>(trainTrack);
+            NetInfo URSMetroTrack = Util.Clone<NetInfo>(trainTrack);
 
             URSMetroTrack.name = "URS Metro Track";
             URSMetroTrack.m_class = metroTrack.m_class;
@@ -49,4 +47,6 @@ namespace UnifiedRailwaySystem
         }
         #endregion
     }
+
+    
 }

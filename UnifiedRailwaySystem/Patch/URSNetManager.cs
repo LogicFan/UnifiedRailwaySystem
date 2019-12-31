@@ -16,12 +16,9 @@ namespace UnifiedRailwaySystem
         {
             public static bool Prefix(ref NetInfo info)
             {
-                if (info.name.Contains("Metro Track"))
+                if (info.name.Contains("Station Track"))
                 {
-                    // info = PrefabCollection<NetInfo>.FindLoaded("URS Metro Track");
-                    // Debug.Log("NetManager.CreateSegament, info: " + info);
-                    // info = PrefabCollection<NetInfo>.FindLoaded("Train Track Tunnel");
-
+                    Debug.Log("NetManager.CreateSegament, info: " + info);
                 }
                 return true;
             }

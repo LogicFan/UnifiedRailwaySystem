@@ -54,9 +54,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patch\URSPatch.cs" />
+    <Compile Include="Track\URSTrack.cs" />
     <Compile Include="URSInit.cs" />
     <Compile Include="URSUtil.cs" />
-    <Compile Include="URSNetManager.cs" />
+    <Compile Include="Patch\URSNetManager.cs" />
     <Compile Include="URSMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
