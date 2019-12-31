@@ -18,6 +18,7 @@ namespace UnifiedRailwaySystem
 
         public static void Initialize()
         {
+            Debug.Log("Util.Initialize");
             // begin initialize data region
             _trainItemClass = PrefabCollection<NetInfo>.FindLoaded("Train Track").m_class;
             _metroItemClass = PrefabCollection<NetInfo>.FindLoaded("Metro Track").m_class;
