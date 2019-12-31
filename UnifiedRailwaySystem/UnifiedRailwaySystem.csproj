@@ -54,6 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patch\URSRoadBridgeAI.cs" />
+    <Compile Include="Patch\URSTrainTrackBaseAI.cs" />
     <Compile Include="Patch\URSPatch.cs" />
     <Compile Include="Track\URSTrack.cs" />
     <Compile Include="URSInit.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="Patch\URSNetManager.cs" />
     <Compile Include="URSMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vehicle\URSVehicle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -73,6 +73,11 @@ namespace UnifiedRailwaySystem
                 }
             }
 
+            // Let Train Track be able to connect to Metro Track
+            info.m_connectGroup |= Util.AllRailway;
+            info.m_connectionClass = Util.roadItemClass;
+            info.m_intersectClass = null;
+
             return;
         }
 
@@ -83,7 +88,21 @@ namespace UnifiedRailwaySystem
             info.m_class.m_layer |= ItemClass.Layer.Default;
 
             // Let Metro Track be able to connect to Train Track.
+            info.m_connectGroup |= Util.AllRailway;
             info.m_connectionClass = Util.trainItemClass;
+        }
+
+        private static void ChangeTramTrack(NetInfo info)
+        {
+            Debug.Log("URSTrack.ChangeTramTrack, info: " + info + ".");
+
+            // Let Tram Track be able to connect to Metro Track.
+            info.m_connectGroup |= Util.AllRailway;
+            info.m_connectionClass = Util.metroItemClass;
+
+            // To be able to let Tram Track connect to Train Track, please see
+            // ref: UnifiedRailwaySystem.URSRoadBridgeAI.URSCanConnectTo
+            // ref: UnifiedRailwaySystem.URSTrainTrackBaseAI.URSCanConnectTo
         }
 
         public static void UnchangeTrack()

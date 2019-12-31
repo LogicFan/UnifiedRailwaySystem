@@ -7,14 +7,21 @@ namespace UnifiedRailwaySystem
 {
     public static class Util
     {
-        #region dataItemClass
         private static ItemClass _trainItemClass;
         private static ItemClass _metroItemClass;
         private static ItemClass _roadItemClass;
         public static ItemClass trainItemClass => _trainItemClass;
         public static ItemClass metroItemClass => _metroItemClass;
         public static ItemClass roadItemClass => _roadItemClass;
-        #endregion
+
+        public static NetInfo.ConnectGroup AllRailway =>
+            NetInfo.ConnectGroup.DoubleTrain |
+            NetInfo.ConnectGroup.SingleTrain |
+            NetInfo.ConnectGroup.TrainStation |
+            NetInfo.ConnectGroup.CenterTram |
+            NetInfo.ConnectGroup.NarrowTram |
+            NetInfo.ConnectGroup.SingleTram |
+            NetInfo.ConnectGroup.WideTram;
 
         public static void Initialize()
         {
