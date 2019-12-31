@@ -63,7 +63,7 @@ namespace UnifiedRailwaySystem
 
         private static void ChangeTrainTrack(NetInfo info)
         {
-            Debug.Log("URSPrefab.ChangeTrainTrack, info: " + info + ".");
+            Debug.Log("URSTrack.ChangeTrainTrack, info: " + info + ".");
             foreach (NetInfo.Lane lane in info.m_lanes)
             {
                 // Let Metro vehicle can pass though Train Track.
@@ -78,6 +78,7 @@ namespace UnifiedRailwaySystem
 
         private static void ChangeMetroTrack(NetInfo info)
         {
+            Debug.Log("URSTrack.ChangeMetroTrack, info: " + info + ".");
             // Add layer Default, which is the same layer as Train Track.
             info.m_class.m_layer |= ItemClass.Layer.Default;
 
