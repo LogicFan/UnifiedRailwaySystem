@@ -54,6 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patch\URSTrainTrackAI.cs" />
+    <Compile Include="Patch\URSRoadAI.cs" />
     <Compile Include="Patch\URSRoadBridgeAI.cs" />
     <Compile Include="Patch\URSTrainTrackBaseAI.cs" />
     <Compile Include="Patch\URSPatch.cs" />
