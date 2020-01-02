@@ -7,27 +7,50 @@ namespace UnifiedRailwaySystem
 {
     public static class Util
     {
-        private static ItemClass _trainItemClass;
-        private static ItemClass _metroItemClass;
-        private static ItemClass _roadItemClass;
-        public static ItemClass trainItemClass => _trainItemClass;
-        public static ItemClass metroItemClass => _metroItemClass;
-        public static ItemClass roadItemClass => _roadItemClass;
+        public static class Cache
+        {
+            #region TrackItemClass
+            private static ItemClass _trainTrackItemClass;
+            private static ItemClass _metroTrackItemClass;
+            private static ItemClass _tramTrackItemClass;
+            public static ItemClass trainTrackItemClass => _trainTrackItemClass;
+            public static ItemClass metroTrackItemClass => _metroTrackItemClass;
+            public static ItemClass tramTrackItemClass => _tramTrackItemClass;
+            #endregion
+
+            #region ConnectGroup
+            private static NetInfo.ConnectGroup _trainConnectGroup;
+            private static NetInfo.ConnectGroup _tramConnectGroup;
+            public static NetInfo.ConnectGroup trainConnectGroup => _trainConnectGroup;
+            public static NetInfo.ConnectGroup tramConnectGroup => _tramConnectGroup;
+            #endregion
+
+            public static void Initialize()
+            {
+                _trainTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Train Track").m_class;
+                _metroTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Metro Track").m_class;
+                _tramTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Basic Road").m_class;
+
+                _trainConnectGroup = NetInfo.ConnectGroup.DoubleTrain
+                | NetInfo.ConnectGroup.SingleTrain
+                | NetInfo.ConnectGroup.TrainStation;
+                _tramConnectGroup = NetInfo.ConnectGroup.CenterTram
+                | NetInfo.ConnectGroup.NarrowTram
+                | NetInfo.ConnectGroup.SingleTram
+                | NetInfo.ConnectGroup.WideTram;
+            }
+        }
 
         public static void Initialize()
         {
             Debug.Log("Util.Initialize");
-            // begin initialize data region
-            _trainItemClass = PrefabCollection<NetInfo>.FindLoaded("Train Track").m_class;
-            _metroItemClass = PrefabCollection<NetInfo>.FindLoaded("Metro Track").m_class;
-            _roadItemClass = PrefabCollection<NetInfo>.FindLoaded("Basic Road").m_class;
-            // end   initialize data region
+            Cache.Initialize();
         }
 
         public static T Clone<T>(T originalPrefab) where T : PrefabInfo
         {
             var instance = Object.Instantiate(originalPrefab.gameObject);
-            
+
             // magical code comes from MOM
             instance.transform.parent = originalPrefab.gameObject.transform;
             // instance.transform.SetParent(transform);

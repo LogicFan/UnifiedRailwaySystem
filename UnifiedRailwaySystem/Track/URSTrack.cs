@@ -68,6 +68,7 @@ namespace UnifiedRailwaySystem
         private static void ChangeTrainTrack(NetInfo info)
         {
             Debug.Log("URSTrack.ChangeTrainTrack, info: " + info + ".");
+
             foreach (NetInfo.Lane lane in info.m_lanes)
             {
                 // Let Metro and Tram vehicle can pass though Train Track.
@@ -78,11 +79,17 @@ namespace UnifiedRailwaySystem
             }
 
             // Let Train Track be able to connect to Metro Track and Tram Track
-            info.m_connectGroup |= NetInfo.ConnectGroup.CenterTram
-                | NetInfo.ConnectGroup.NarrowTram
-                | NetInfo.ConnectGroup.SingleTram
-                | NetInfo.ConnectGroup.WideTram;
-            info.m_connectionClass = Util.roadItemClass;
+            foreach (NetInfo.Node node in info.m_nodes)
+            {
+                if ((node.m_connectGroup & Util.Cache.trainConnectGroup) != 0)
+                {
+                    node.m_connectGroup |= Util.Cache.tramConnectGroup;
+                }
+            }
+            info.m_connectGroup |= Util.Cache.tramConnectGroup;
+            info.m_nodeConnectGroups |= Util.Cache.tramConnectGroup;
+
+            info.m_connectionClass = Util.Cache.tramTrackItemClass;
             info.m_intersectClass = null;
 
             return;
@@ -100,16 +107,17 @@ namespace UnifiedRailwaySystem
                 }
             }
 
-            // Add layer Default, which is the same layer as Train Track.
+            // Let Metro Track be able to connect to Train Track and Tram Track
             info.m_class.m_layer |= ItemClass.Layer.Default;
 
-            // Let Metro Track be able to connect to Train Track and Tram Track.
-            info.m_connectGroup |= NetInfo.ConnectGroup.DoubleTrain
-                | NetInfo.ConnectGroup.CenterTram
-                | NetInfo.ConnectGroup.NarrowTram
-                | NetInfo.ConnectGroup.SingleTram
-                | NetInfo.ConnectGroup.WideTram;
-            info.m_connectionClass = Util.roadItemClass;
+            foreach (NetInfo.Node node in info.m_nodes)
+            {
+                node.m_connectGroup |= Util.Cache.tramConnectGroup | NetInfo.ConnectGroup.DoubleTrain;
+            }
+            info.m_connectGroup |= Util.Cache.tramConnectGroup | NetInfo.ConnectGroup.DoubleTrain;
+            info.m_nodeConnectGroups |= Util.Cache.tramConnectGroup | NetInfo.ConnectGroup.DoubleTrain;
+
+            info.m_connectionClass = Util.Cache.tramTrackItemClass;
         }
 
         private static void ChangeTramTrack(NetInfo info)
