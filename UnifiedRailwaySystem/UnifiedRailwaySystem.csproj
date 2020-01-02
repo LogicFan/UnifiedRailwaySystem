@@ -60,7 +60,6 @@
     <Compile Include="Patch\URSTrainTrackBaseAI.cs" />
     <Compile Include="Patch\URSPatch.cs" />
     <Compile Include="Track\URSTrack.cs" />
-    <Compile Include="URSInit.cs" />
     <Compile Include="URSUtil.cs" />
     <Compile Include="Patch\URSNetManager.cs" />
     <Compile Include="URSMod.cs" />

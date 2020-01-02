@@ -14,15 +14,6 @@ namespace UnifiedRailwaySystem
         public static ItemClass metroItemClass => _metroItemClass;
         public static ItemClass roadItemClass => _roadItemClass;
 
-        public static NetInfo.ConnectGroup AllRailway =>
-            NetInfo.ConnectGroup.DoubleTrain |
-            NetInfo.ConnectGroup.SingleTrain |
-            NetInfo.ConnectGroup.TrainStation |
-            NetInfo.ConnectGroup.CenterTram |
-            NetInfo.ConnectGroup.NarrowTram |
-            NetInfo.ConnectGroup.SingleTram |
-            NetInfo.ConnectGroup.WideTram;
-
         public static void Initialize()
         {
             Debug.Log("Util.Initialize");

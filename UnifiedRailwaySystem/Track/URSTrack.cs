@@ -33,6 +33,10 @@ namespace UnifiedRailwaySystem
                             break;
                         }
                     case TrackType.TramTrack:
+                        {
+                            ChangeTramTrack(info);
+                            break;
+                        }
                     default:
                         {
                             break;
@@ -66,15 +70,18 @@ namespace UnifiedRailwaySystem
             Debug.Log("URSTrack.ChangeTrainTrack, info: " + info + ".");
             foreach (NetInfo.Lane lane in info.m_lanes)
             {
-                // Let Metro vehicle can pass though Train Track.
+                // Let Metro and Tram vehicle can pass though Train Track.
                 if ((lane.m_vehicleType & VehicleInfo.VehicleType.Train) != 0)
                 {
-                    lane.m_vehicleType |= VehicleInfo.VehicleType.Metro;
+                    lane.m_vehicleType |= VehicleInfo.VehicleType.Metro | VehicleInfo.VehicleType.Tram;
                 }
             }
 
-            // Let Train Track be able to connect to Metro Track
-            info.m_connectGroup |= Util.AllRailway;
+            // Let Train Track be able to connect to Metro Track and Tram Track
+            info.m_connectGroup |= NetInfo.ConnectGroup.CenterTram
+                | NetInfo.ConnectGroup.NarrowTram
+                | NetInfo.ConnectGroup.SingleTram
+                | NetInfo.ConnectGroup.WideTram;
             info.m_connectionClass = Util.roadItemClass;
             info.m_intersectClass = null;
 
@@ -84,25 +91,44 @@ namespace UnifiedRailwaySystem
         private static void ChangeMetroTrack(NetInfo info)
         {
             Debug.Log("URSTrack.ChangeMetroTrack, info: " + info + ".");
+            foreach (NetInfo.Lane lane in info.m_lanes)
+            {
+                // Let Tram vehicle can pass though Metro Track.
+                if ((lane.m_vehicleType & VehicleInfo.VehicleType.Metro) != 0)
+                {
+                    lane.m_vehicleType |= VehicleInfo.VehicleType.Tram;
+                }
+            }
+
             // Add layer Default, which is the same layer as Train Track.
             info.m_class.m_layer |= ItemClass.Layer.Default;
 
-            // Let Metro Track be able to connect to Train Track.
-            info.m_connectGroup |= Util.AllRailway;
-            info.m_connectionClass = Util.trainItemClass;
+            // Let Metro Track be able to connect to Train Track and Tram Track.
+            info.m_connectGroup |= NetInfo.ConnectGroup.DoubleTrain
+                | NetInfo.ConnectGroup.CenterTram
+                | NetInfo.ConnectGroup.NarrowTram
+                | NetInfo.ConnectGroup.SingleTram
+                | NetInfo.ConnectGroup.WideTram;
+            info.m_connectionClass = Util.roadItemClass;
         }
 
         private static void ChangeTramTrack(NetInfo info)
         {
             Debug.Log("URSTrack.ChangeTramTrack, info: " + info + ".");
-
-            // Let Tram Track be able to connect to Metro Track.
-            info.m_connectGroup |= Util.AllRailway;
-            info.m_connectionClass = Util.metroItemClass;
+            foreach (NetInfo.Lane lane in info.m_lanes)
+            {
+                // Let Metro vehicle can pass though Tram Track.
+                if ((lane.m_vehicleType & VehicleInfo.VehicleType.Tram) != 0)
+                {
+                    lane.m_vehicleType |= VehicleInfo.VehicleType.Metro;
+                }
+            }
 
             // To be able to let Tram Track connect to Train Track, please see
             // ref: UnifiedRailwaySystem.URSRoadBridgeAI.URSCanConnectTo
             // ref: UnifiedRailwaySystem.URSTrainTrackBaseAI.URSCanConnectTo
+            // ref: UnifiedRailwaySystem.URSRoadAI.URSCheckBuildPosition
+            // ref: UnifiedRailwaySystem.URSTrainTrackAI.URSCheckBuildPosition
         }
 
         public static void UnchangeTrack()
