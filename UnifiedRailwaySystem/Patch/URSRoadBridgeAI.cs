@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace UnifiedRailwaySystem.URSRoadBridgeAI
 {
-    /** Elimiate the ToolBase.ToolErrors.ObjectCollision between TrainTrack
-     * and Road Bridge.
-     * Ref: UnifiedRailwaySystem.URSTrainTrackBaseAI.URSCanConnectTo
-     */
+    /// <summary>
+    /// Elimiate the <c>ToolBase.ToolErrors.ObjectCollision</c> between Train Track and Road Bridge.
+    /// Ref: UnifiedRailwaySystem.URSTrainTrackBaseAI.URSCanConnectTo
+    /// </summary>
     [HarmonyPatch(typeof(RoadBridgeAI))]
     [HarmonyPatch("CanConnectTo")]
     public static class URSCanConnectTo
@@ -19,16 +19,17 @@ namespace UnifiedRailwaySystem.URSRoadBridgeAI
         {
             var codes = new List<CodeInstruction>(instructions);
 
-            // check if the assembly is as expected
+            // check if the assembly is as expected.
             if (codes[4].opcode == OpCodes.Call && codes[116].opcode == OpCodes.Ret)
             {
-                // remove 5 - 115 (inclusive) line of IL code
+                // remove 5 - 115 (inclusive) line of IL code. After the change, the 
+                // method is now equivalent to base method.
                 codes.RemoveRange(5, 111);
             }
             else
             {
                 ExceptionPanel panel = UIView.library.ShowModal<ExceptionPanel>("ExceptionPanel");
-                panel.SetMessage("Harmony Trainpiler Error", "Error on URSRoadBridgeAI.cs, line 31", true);
+                panel.SetMessage("Harmony Trainpiler Error", "Error on RoadBridgeAI.CanConnectTo.", true);
             }
 
             // string s = "";

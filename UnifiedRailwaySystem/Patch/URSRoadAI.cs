@@ -7,9 +7,10 @@ using UnityEngine;
 
 namespace UnifiedRailwaySystem.URSRoadAI
 {
-    /** Elimiate the ToolBase.ToolErrors.CannotCrossTrack.
-     * Ref: UnifiedRailwaySystem.URSTrainTrackAI.URSCheckBuildPosition
-     */
+    /// <summary>
+    /// Elimiate the <c>ToolBase.ToolErrors.CannotCrossTrack</c> between Train Track and Tram Track.
+    /// Ref: UnifiedRailwaySystem.URSTrainTrackAI.URSCheckBuildPosition
+    /// </summary>
     [HarmonyPatch(typeof(RoadAI))]
     [HarmonyPatch("CheckBuildPosition")]
     public static class URSCheckBuildPosition
@@ -20,6 +21,7 @@ namespace UnifiedRailwaySystem.URSRoadAI
 
             var postfix = new CodeInstruction[]
             {
+                // toolErrors &= ~ToolBase.ToolErrors.CannotCrossTrack;
                 new CodeInstruction(OpCodes.Ldc_I4, -8388609),
                 new CodeInstruction(OpCodes.Conv_I8),
                 new CodeInstruction(OpCodes.And),
@@ -27,7 +29,7 @@ namespace UnifiedRailwaySystem.URSRoadAI
                 new CodeInstruction(OpCodes.Ldloc_0)
             };
 
-            // check if the assembly is as expected
+            // check if the assembly is as expected.
             if (codes[241].opcode == OpCodes.Ret)
             {
                 // add postfix just before return statement.
@@ -36,7 +38,7 @@ namespace UnifiedRailwaySystem.URSRoadAI
             else
             {
                 ExceptionPanel panel = UIView.library.ShowModal<ExceptionPanel>("ExceptionPanel");
-                panel.SetMessage("Harmony Trainpiler Error", "Error on URSRoadAI.cs, line 39", true);
+                panel.SetMessage("Harmony Trainpiler Error", "Error on RoadAI.CheckBuildPosition.", true);
             }
 
             // string s = "";

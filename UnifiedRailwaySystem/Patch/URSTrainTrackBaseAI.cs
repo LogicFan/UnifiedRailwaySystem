@@ -19,16 +19,17 @@ namespace UnifiedRailwaySystem.URSTrainTrackBaseAI
         {
             var codes = new List<CodeInstruction>(instructions);
 
-            // check if the assembly is as expected
+            // check if the assembly is as expected.
             if (codes[4].opcode == OpCodes.Call && codes[114].opcode == OpCodes.Ret)
             {
-                // remove 5 - 113 (inclusive) line of IL code
+                // remove 5 - 113 (inclusive) line of IL code. After the change, the 
+                // method is now equivalent to base method.
                 codes.RemoveRange(5, 109);
             }
             else
             {
                 ExceptionPanel panel = UIView.library.ShowModal<ExceptionPanel>("ExceptionPanel");
-                panel.SetMessage("Harmony Trainpiler Error", "Error on URSTrainTrackBaseAI.cs, line 31", true);
+                panel.SetMessage("Harmony Trainpiler Error", "Error on TrainTrackBaseAI.URSCanConnectTo.", true);
             }
 
             // string s = "";
