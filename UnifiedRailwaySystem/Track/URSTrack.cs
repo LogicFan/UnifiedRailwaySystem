@@ -133,10 +133,10 @@ namespace UnifiedRailwaySystem
             }
 
             // To be able to let Tram Track connect to Train Track, please see
-            // ref: UnifiedRailwaySystem.URSRoadBridgeAI.URSCanConnectTo
-            // ref: UnifiedRailwaySystem.URSTrainTrackBaseAI.URSCanConnectTo
-            // ref: UnifiedRailwaySystem.URSRoadAI.URSCheckBuildPosition
-            // ref: UnifiedRailwaySystem.URSTrainTrackAI.URSCheckBuildPosition
+            // ref: UnifiedRailwaySystem.PatchRoadBridgeAI.URSCanConnectTo
+            // ref: UnifiedRailwaySystem.PatchTrainTrackBaseAI.URSCanConnectTo
+            // ref: UnifiedRailwaySystem.PatchRoadAI.URSCheckBuildPosition
+            // ref: UnifiedRailwaySystem.PatchTrainTrackAI.URSCheckBuildPosition
         }
 
         public static void UnchangeTrack()

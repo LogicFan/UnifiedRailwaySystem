@@ -5,11 +5,11 @@ using System.Linq;
 using System.Reflection.Emit;
 using UnityEngine;
 
-namespace UnifiedRailwaySystem.URSTrainTrackAI
+namespace UnifiedRailwaySystem.PatchTrainTrackAI
 {
     /// <summary>
     /// Elimiate the <c>ToolBase.ToolErrors.CannotCrossTrack</c> between Train Track and Tram Track.
-    /// Ref: UnifiedRailwaySystem.URSRoadAI.URSCheckBuildPosition
+    /// Ref: UnifiedRailwaySystem.PatchRoadAI.URSCheckBuildPosition
     /// </summary>
     [HarmonyPatch(typeof(TrainTrackAI))]
     [HarmonyPatch("CheckBuildPosition")]

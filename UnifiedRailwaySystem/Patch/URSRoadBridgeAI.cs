@@ -5,11 +5,11 @@ using System.Linq;
 using System.Reflection.Emit;
 using UnityEngine;
 
-namespace UnifiedRailwaySystem.URSRoadBridgeAI
+namespace UnifiedRailwaySystem.PatchRoadBridgeAI
 {
     /// <summary>
     /// Elimiate the <c>ToolBase.ToolErrors.ObjectCollision</c> between Train Track and Road Bridge.
-    /// Ref: UnifiedRailwaySystem.URSTrainTrackBaseAI.URSCanConnectTo
+    /// Ref: UnifiedRailwaySystem.PatchTrainTrackBaseAI.URSCanConnectTo
     /// </summary>
     [HarmonyPatch(typeof(RoadBridgeAI))]
     [HarmonyPatch("CanConnectTo")]
