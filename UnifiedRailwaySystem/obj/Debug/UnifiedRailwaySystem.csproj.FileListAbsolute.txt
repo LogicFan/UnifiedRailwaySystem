@@ -7,7 +7,6 @@ C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Deb
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\PopsApiWrapper.dll
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\ICSharpCode.SharpZipLib.dll
-C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.csprojAssemblyReference.cache
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.csproj.CopyComplete
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.dll
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.pdb
