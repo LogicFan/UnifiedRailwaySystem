@@ -14,19 +14,14 @@ namespace UnifiedRailwaySystem
         public static class Cache
         {
             #region TrackItemClass
-            private static ItemClass _trainTrackItemClass;
-            private static ItemClass _metroTrackItemClass;
-            private static ItemClass _tramTrackItemClass;
-            public static ItemClass trainTrackItemClass => _trainTrackItemClass;
-            public static ItemClass metroTrackItemClass => _metroTrackItemClass;
-            public static ItemClass tramTrackItemClass => _tramTrackItemClass;
+            public static ItemClass trainTrackItemClass { get; private set; }
+            public static ItemClass metroTrackItemClass { get; private set; }
+            public static ItemClass tramTrackItemClass { get; private set; }
             #endregion
 
             #region ConnectGroup
-            private static NetInfo.ConnectGroup _trainConnectGroup;
-            private static NetInfo.ConnectGroup _tramConnectGroup;
-            public static NetInfo.ConnectGroup trainConnectGroup => _trainConnectGroup;
-            public static NetInfo.ConnectGroup tramConnectGroup => _tramConnectGroup;
+            public static NetInfo.ConnectGroup trainConnectGroup { get; private set; }
+            public static NetInfo.ConnectGroup tramConnectGroup { get; private set; }
             #endregion
 
             /// <summary>
@@ -34,14 +29,14 @@ namespace UnifiedRailwaySystem
             /// </summary>
             public static void Initialize()
             {
-                _trainTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Train Track").m_class;
-                _metroTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Metro Track").m_class;
-                _tramTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Basic Road").m_class;
+                trainTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Train Track").m_class;
+                metroTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Metro Track").m_class;
+                tramTrackItemClass = PrefabCollection<NetInfo>.FindLoaded("Basic Road").m_class;
 
-                _trainConnectGroup = NetInfo.ConnectGroup.DoubleTrain
+                trainConnectGroup = NetInfo.ConnectGroup.DoubleTrain
                     | NetInfo.ConnectGroup.SingleTrain
                     | NetInfo.ConnectGroup.TrainStation;
-                _tramConnectGroup = NetInfo.ConnectGroup.CenterTram
+                tramConnectGroup = NetInfo.ConnectGroup.CenterTram
                     | NetInfo.ConnectGroup.NarrowTram
                     | NetInfo.ConnectGroup.SingleTram
                     | NetInfo.ConnectGroup.WideTram;
