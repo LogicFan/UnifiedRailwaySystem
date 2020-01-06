@@ -12,3 +12,16 @@ C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Deb
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.pdb
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\0Harmony.dll
 C:\Users\范珺\Desktop\Github\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.csprojAssemblyReference.cache
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\UnifiedRailwaySystem.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\UnifiedRailwaySystem.pdb
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\0Harmony.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\Assembly-CSharp.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\ColossalManaged.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\ICities.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\UnityEngine.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\PopsApiWrapper.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.csproj.CopyComplete
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.dll
+C:\Users\fanyo\GitHub\UnifiedRailwaySystem\UnifiedRailwaySystem\obj\Debug\UnifiedRailwaySystem.pdb

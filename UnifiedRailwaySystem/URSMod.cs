@@ -27,7 +27,7 @@ namespace UnifiedRailwaySystem
             Debug.Log("URSMod.OnLevelLoaded");
 
             Util.Initialize();
-            URSTrack.ChangeTrack();
+            URSTrack.Convert();
             URSPatch.Patch();
         }
 
@@ -35,7 +35,7 @@ namespace UnifiedRailwaySystem
         {
             Debug.Log("URSMod.OnLevelUnloading");
 
-            URSTrack.UnchangeTrack();
+            URSTrack.Revert();
             URSPatch.Unpatch();
         }
 

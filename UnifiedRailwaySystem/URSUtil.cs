@@ -45,7 +45,7 @@ namespace UnifiedRailwaySystem
 
         public interface BackupInfo
         {
-            void BackupInfo<T>(T prefabInfo) where T : PrefabInfo;
+            void Backup<T>(T prefabInfo) where T: PrefabInfo;
             void Restore();
         }
 

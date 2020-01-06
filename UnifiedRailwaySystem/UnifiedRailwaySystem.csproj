@@ -59,6 +59,7 @@
     <Compile Include="Patch\URSRoadBridgeAI.cs" />
     <Compile Include="Patch\URSTrainTrackBaseAI.cs" />
     <Compile Include="Patch\URSPatch.cs" />
+    <Compile Include="Track\URSCustomTrack.cs" />
     <Compile Include="Track\URSMetroTrack.cs" />
     <Compile Include="Track\URSTrainTrack.cs" />
     <Compile Include="Track\URSTramTrack.cs" />

@@ -2,36 +2,18 @@
 using UnityEngine;
 
 namespace UnifiedRailwaySystem
-{ 
+{
     public static class URSTrainTrack
     {
-        public static void Backup(NetInfo info)
+        private static List<Util.BackupInfo> _backups = new List<Util.BackupInfo>();
+
+        public static void Convert(NetInfo info)
         {
-            Debug.Log("URSTrainTrack.Backup, info: " + info + ".");
+            Debug.Log("URSTrainTrack.Convert, info: " + info + ".");
 
-            BackupInfo backup = new BackupInfo();
-            backup.lanes_vehicleType = new VehicleInfo.VehicleType[info.m_lanes.Length];
-            backup.nodes_connectGroup = new NetInfo.ConnectGroup[info.m_nodes.Length];
-
-            for (int i = 0; i < info.m_lanes.Length; ++i)
-            {
-                backup.lanes_vehicleType[i] = info.m_lanes[i].m_vehicleType;
-            }
-            for (int i = 0; i < info.m_nodes.Length; ++i)
-            {
-                 backup.nodes_connectGroup[i] = info.m_nodes[i].m_connectGroup;
-            }
-            backup.connectGroup = info.m_connectGroup;
-            backup.nodeConnectGroup = info.m_nodeConnectGroups;
-            backup.connectionClass = info.m_connectionClass;
-            backup.intersectClass = info.m_intersectClass;
-
-            _backupDictionary.Add(info, backup);
-        }
-
-        public static void Change(NetInfo info)
-        {
-            Debug.Log("URSTrack.ChangeTrainTrack, info: " + info + ".");
+            Util.BackupInfo backup = new BackupInfo();
+            backup.Backup(info);
+            _backups.Add(backup);
 
             foreach (NetInfo.Lane lane in info.m_lanes)
             {
@@ -55,44 +37,67 @@ namespace UnifiedRailwaySystem
 
             info.m_connectionClass = Util.Cache.tramTrackItemClass;
             info.m_intersectClass = null;
-
-            return;
         }
 
-        public static void Restore()
+        public static void Revert()
         {
-            foreach(KeyValuePair<NetInfo, BackupInfo> kvp in _backupDictionary)
+            foreach(Util.BackupInfo backup in _backups)
             {
-                NetInfo info = kvp.Key;
-                BackupInfo backup = kvp.Value;
-
-                Debug.Log("URSTrainTrack.Restore, info: " + info + ".");
-                
-                for (int i = 0; i < info.m_lanes.Length; ++i)
-                {
-                    info.m_lanes[i].m_vehicleType = backup.lanes_vehicleType[i];
-                }
-                for(int i = 0; i < info.m_nodes.Length; ++i)
-                {
-                    info.m_nodes[i].m_connectGroup = backup.nodes_connectGroup[i];
-                }
-                info.m_connectGroup = backup.connectGroup;
-                info.m_nodeConnectGroups = backup.nodeConnectGroup;
-                info.m_connectionClass = backup.connectionClass;
-                info.m_intersectClass = backup.intersectClass;
+                backup.Restore();
             }
         }
 
-        private class BackupInfo
+        class BackupInfo : Util.BackupInfo
         {
-            public VehicleInfo.VehicleType[] lanes_vehicleType;
-            public NetInfo.ConnectGroup[] nodes_connectGroup;
-            public NetInfo.ConnectGroup connectGroup;
-            public NetInfo.ConnectGroup nodeConnectGroup;
-            public ItemClass connectionClass;
-            public ItemClass intersectClass;
-        }
+            NetInfo _info;
 
-        private static Dictionary<NetInfo, BackupInfo> _backupDictionary;
+            private VehicleInfo.VehicleType[] _lanes_vehicleType;
+            private NetInfo.ConnectGroup[] _nodes_connectGroup;
+            private NetInfo.ConnectGroup _connectGroup;
+            private NetInfo.ConnectGroup _nodeConnectGroup;
+            private ItemClass _connectionClass;
+            private ItemClass _intersectClass;
+
+            public void Backup<T>(T info) where T : PrefabInfo
+            {
+                _info = info as NetInfo;
+
+                System.Diagnostics.Debug.Assert(_info != null);
+
+                _lanes_vehicleType = new VehicleInfo.VehicleType[_info.m_lanes.Length];
+                _nodes_connectGroup = new NetInfo.ConnectGroup[_info.m_nodes.Length];
+
+                for (int i = 0; i < _info.m_lanes.Length; ++i)
+                {
+                    _lanes_vehicleType[i] = _info.m_lanes[i].m_vehicleType;
+                }
+                for (int i = 0; i < _info.m_nodes.Length; ++i)
+                {
+                    _nodes_connectGroup[i] = _info.m_nodes[i].m_connectGroup;
+                }
+                _connectGroup = _info.m_connectGroup;
+                _nodeConnectGroup = _info.m_nodeConnectGroups;
+                _connectionClass = _info.m_connectionClass;
+                _intersectClass = _info.m_intersectClass;
+            }
+
+            public void Restore()
+            {
+                System.Diagnostics.Debug.Assert(_info != null);
+
+                for (int i = 0; i < _info.m_lanes.Length; ++i)
+                {
+                    _info.m_lanes[i].m_vehicleType = _lanes_vehicleType[i];
+                }
+                for (int i = 0; i < _info.m_nodes.Length; ++i)
+                {
+                    _info.m_nodes[i].m_connectGroup = _nodes_connectGroup[i];
+                }
+                _info.m_connectGroup = _connectGroup;
+                _info.m_nodeConnectGroups = _nodeConnectGroup;
+                _info.m_connectionClass = _connectionClass;
+                _info.m_intersectClass = _intersectClass;
+            }
+        }
     }
 }
